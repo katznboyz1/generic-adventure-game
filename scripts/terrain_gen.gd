@@ -2,7 +2,7 @@ tool
 extends Spatial
 
 const MAX_INT = 0x7FFFFFFFFFFFFFFF;
-var NOISE_SEED = rand_range(0, MAX_INT);
+var NOISE_SEED = 1; #rand_range(0, MAX_INT);
 const NOISE_OCTAVES = 2;
 const NOISE_PERIOD = 150;
 const NOISE_LACUNARITY = 2;

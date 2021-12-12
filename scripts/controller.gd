@@ -5,6 +5,7 @@ extends KinematicBody
 
 const CAMERA_MOVE_SPEED = 4;
 const CAMERA_MIN_MAX_ANGLES = [-89, 89];
+const GRAVITY = 0; #200;
 
 var camera_velocity = Vector3();
 
@@ -32,6 +33,7 @@ func _physics_process(delta):
 	var relative_direction = (forward_direction * camera_input.y + right_direction * camera_input.x);
 	
 	camera_velocity.x = relative_direction.x * CAMERA_MOVE_SPEED;
-	camera_velocity.z = relative_direction.z * CAMERA_MOVE_SPEED;
+	camera_velocity.z = -relative_direction.y * CAMERA_MOVE_SPEED;
+	#camera_velocity.y -= delta * GRAVITY;
 	
 	camera_velocity = move_and_slide(camera_velocity, Vector3.UP);
