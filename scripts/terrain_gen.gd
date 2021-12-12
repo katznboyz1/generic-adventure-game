@@ -108,7 +108,7 @@ func vertices_to_mesh():
 	
 	mesh_instance = get_node(NodePath("ground_terrain").get_as_property_path());
 	
-	mesh_instance.mesh = mesh_array;
+	mesh_instance.create_trimesh_collision();
 
 func _ready():
 	
