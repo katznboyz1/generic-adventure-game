@@ -9,6 +9,7 @@ const NOISE_LACUNARITY = 2;
 const NOISE_PERSISTENCE = .5;
 const HEIGHT_MULTIPLIER = 20;
 const UV_OFFSET = .1 * 10;
+const MAX_ACCEPTABLE_DISTANCE = Vector3(20, 20, 20);
 
 const INITIAL_MAP_U_DISTANCE_FROM_ORIGIN = 250;
 const INITIAL_MAP_V_DISTANCE_FROM_ORIGIN = 250;
@@ -40,7 +41,7 @@ func generate_terrain():
 	# mesh/uv
 	for u_coord in range(-INITIAL_MAP_U_DISTANCE_FROM_ORIGIN, INITIAL_MAP_U_DISTANCE_FROM_ORIGIN):
 		
-		for v_coord in range(-INITIAL_MAP_V_DISTANCE_FROM_ORIGIN, INITIAL_MAP_V_DISTANCE_FROM_ORIGIN):
+		for v_coord in range(-INITIAL_MAP_U_DISTANCE_FROM_ORIGIN, INITIAL_MAP_V_DISTANCE_FROM_ORIGIN):
 			
 			var height = noise_generator.get_noise_2d(u_coord, v_coord) * HEIGHT_MULTIPLIER;
 			
@@ -56,13 +57,22 @@ func generate_terrain():
 	# incices
 	for i in range(incides_size):
 		
-		indices.append(i);
-		indices.append(i + (INITIAL_MAP_U_DISTANCE_FROM_ORIGIN * 2) + 1);
+		if (i == 0): continue;
 		
-		if (i != 0 && (i + 1) % (INITIAL_MAP_U_DISTANCE_FROM_ORIGIN * 2) + 1 == 0):
-			
-			indices.append(i + (INITIAL_MAP_U_DISTANCE_FROM_ORIGIN * 2) + 1);
-			indices.append(i + 1);
+		var index_1 = i;
+		var index_2 = i + (INITIAL_MAP_U_DISTANCE_FROM_ORIGIN * 2) + 1;
+		
+		if (index_1 >= vertices.size() || index_2 >= vertices.size()): continue;
+		
+		var index_1_value = vertices[index_1];
+		var index_2_value = vertices[index_2];
+		
+		var index_1_2_distance = index_1_value - index_2_value;
+		
+		if (index_1_2_distance.normalized() >= MAX_ACCEPTABLE_DISTANCE): continue;
+		
+		indices.append(index_1);
+		indices.append(index_2);
 	
 	# normals
 	normals.resize(vertices.size());
@@ -72,6 +82,8 @@ func generate_terrain():
 		normals[i] = Vector3(0, 0, 0);
 	
 	for i in range(0, indices.size(), 2):
+		
+		if (i + 2 >= indices.size()): continue;
 		
 		var index_1 = indices[i + 0];
 		var index_2 = indices[i + 1];
