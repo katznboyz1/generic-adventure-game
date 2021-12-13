@@ -52,13 +52,20 @@ func generate_terrain():
 			
 			uvs.append(Vector2(u_coord * UV_OFFSET, v_coord * UV_OFFSET));
 	
-	var incides_size = (INITIAL_MAP_U_DISTANCE_FROM_ORIGIN * 2) * (INITIAL_MAP_U_DISTANCE_FROM_ORIGIN * 2);
+	var incides_size = (((INITIAL_MAP_U_DISTANCE_FROM_ORIGIN + 0) * 2) + 0) * ((INITIAL_MAP_U_DISTANCE_FROM_ORIGIN - 0) * 2);
 	
 	# incices
 	for i in range(incides_size):
 		
+		if (i % ((INITIAL_MAP_U_DISTANCE_FROM_ORIGIN * 2) - 1) == 0): continue;
+		
 		indices.append(i);
 		indices.append(i + (INITIAL_MAP_U_DISTANCE_FROM_ORIGIN * 2) + 1);
+		
+		if (i != 0 && (i + 1) % (INITIAL_MAP_U_DISTANCE_FROM_ORIGIN * 2) + 1 == 0):
+			
+			indices.append(i + (INITIAL_MAP_U_DISTANCE_FROM_ORIGIN * 2) + 1);
+			indices.append(i + 1);
 	
 	# normals
 	normals.resize(vertices.size());
@@ -111,7 +118,7 @@ func vertices_to_mesh():
 	
 	mesh_instance.mesh = mesh_array;
 	
-	mesh_instance.create_convex_collision();
+	mesh_instance.create_trimesh_collision();
 
 func _ready():
 	
