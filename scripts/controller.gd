@@ -6,9 +6,6 @@ extends KinematicBody
 const CAMERA_MOVE_SPEED = 20;
 const CAMERA_MIN_MAX_ANGLES = [0, 90];
 const GRAVITY = 0; #200;
-const CAMERA_FOV = 90;
-const CAMERA_NEAR = .01;
-const CAMERA_FAR = 400;
 
 var camera_sensitivity = 20;
 
@@ -32,8 +29,6 @@ func _physics_process(delta):
 	
 	var movement = Vector3();
 	
-	#var fov_multiplier = 1;
-	
 	if (Input.is_key_pressed(KEY_W)): movement -= global_transform.basis.y;
 	if (Input.is_key_pressed(KEY_S)): movement += global_transform.basis.y;
 	if (Input.is_key_pressed(KEY_A)): movement -= global_transform.basis.x;
@@ -41,11 +36,8 @@ func _physics_process(delta):
 	if (Input.is_key_pressed(KEY_CONTROL)): sprinting_boost *= 2;
 	if (Input.is_key_pressed(KEY_PAGEUP)): Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
 	if (Input.is_key_pressed(KEY_PAGEDOWN)): Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);
-	#if (Input.is_key_pressed(KEY_C)): fov_multiplier /= 2;
 	
 	movement.y = 0;
-	
-	#camera_node.set_perspective(CAMERA_FOV * fov_multiplier, CAMERA_NEAR, CAMERA_FAR);
 	
 	camera_velocity = move_and_slide(movement.normalized() * CAMERA_MOVE_SPEED * sprinting_boost, Vector3.UP);
 
