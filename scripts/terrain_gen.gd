@@ -63,19 +63,32 @@ func generate_terrain():
 	# incices
 	var indices_index = 0;
 	
-	for u_coord in range(0, INITIAL_MAP_U_DISTANCE_FROM_ORIGIN):
+	for u_coord in range(0, INITIAL_MAP_U_DISTANCE_FROM_ORIGIN + 1):
 		
-		for v_coord in range(0, INITIAL_MAP_V_DISTANCE_FROM_ORIGIN):
+		for v_coord in range(0, INITIAL_MAP_V_DISTANCE_FROM_ORIGIN + 1):
 			
 			var index_1 = indices_index;
 			var index_2 = indices_index + (INITIAL_MAP_U_DISTANCE_FROM_ORIGIN * 1) + 1;
 			var index_3 = indices_index + (INITIAL_MAP_U_DISTANCE_FROM_ORIGIN * 1) + 1;
 			var index_4 = indices_index + 1;
 			
+			if (index_1 > vertices.size() - 1 || index_2 > vertices.size() - 1):
+				
+				break
+			
+			if (INITIAL_MAP_MIN_MAX_HEIGHTS[0] * 2 in [
+				vertices[index_1].y,
+				vertices[index_2].y,
+				vertices[index_3].y,
+				vertices[index_4].y,
+			]):
+				indices_index += 1;
+				continue;
+			
 			indices.append(index_1);
 			indices.append(index_2);
-			
-			if (indices_index != 0 && (indices_index + 1) % ((INITIAL_MAP_U_DISTANCE_FROM_ORIGIN * 1) + 0) == 0):
+				
+			if (indices_index != 0 && ((indices_index + 1) % ((INITIAL_MAP_U_DISTANCE_FROM_ORIGIN * 1) + 0) == 0)):
 				
 				indices.append(index_3);
 				indices.append(index_4);
@@ -134,8 +147,6 @@ func vertices_to_mesh():
 	mesh_instance = get_node(NodePath("ground_terrain").get_as_property_path());
 	
 	mesh_instance.mesh = mesh_array;
-	
-	mesh_instance.create_trimesh_collision();
 
 func _ready():
 	
