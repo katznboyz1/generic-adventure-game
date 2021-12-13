@@ -4,11 +4,11 @@ extends Spatial
 const MAX_INT = 0x7FFFFFFFFFFFFFFF;
 var NOISE_SEED = 1; #rand_range(0, MAX_INT);
 const NOISE_OCTAVES = 2;
-const NOISE_PERIOD = 150;
+const NOISE_PERIOD = 150 / 5;
 const NOISE_LACUNARITY = 2;
 const NOISE_PERSISTENCE = .5;
-const HEIGHT_MULTIPLIER = 40;
-const UV_OFFSET = .1;
+const HEIGHT_MULTIPLIER = 20;
+const UV_OFFSET = .1 * 10;
 
 const INITIAL_MAP_U_DISTANCE_FROM_ORIGIN = 250;
 const INITIAL_MAP_V_DISTANCE_FROM_ORIGIN = 250;
@@ -55,8 +55,6 @@ func generate_terrain():
 	
 	# incices
 	for i in range(incides_size):
-		
-		if (i % ((INITIAL_MAP_U_DISTANCE_FROM_ORIGIN * 2) + 0) < 2): continue;
 		
 		indices.append(i);
 		indices.append(i + (INITIAL_MAP_U_DISTANCE_FROM_ORIGIN * 2) + 1);

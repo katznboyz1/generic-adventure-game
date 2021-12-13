@@ -20,30 +20,27 @@ onready var player_node = get_node(NodePath("player_kinematic_body").get_as_prop
 
 func _physics_process(delta):
 	
+	if (!camera_node): return;
+	
 	camera_velocity.x = 0;
 	camera_velocity.y = 0;
 	
 	var camera_input = Vector2();
 	
-	if (Input.is_key_pressed(KEY_W)): camera_input.y -= 1;
-	if (Input.is_key_pressed(KEY_S)): camera_input.y += 1;
+	var speed = 0;
+	
+	if (Input.is_key_pressed(KEY_W)): speed = CAMERA_MOVE_SPEED;
+	if (Input.is_key_pressed(KEY_S)): speed = -CAMERA_MOVE_SPEED;
 	if (Input.is_key_pressed(KEY_A)): camera_input.x -= 1;
 	if (Input.is_key_pressed(KEY_D)): camera_input.x += 1;
 	if (Input.is_key_pressed(KEY_M)): Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
 	if (Input.is_key_pressed(KEY_N)): Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);
 	
-	camera_input = camera_input.normalized();
+	var camera_global_transform = -global_transform.basis.y;
 	
-	var forward_direction = global_transform.basis.z;
-	var right_direction = global_transform.basis.x;
+	camera_global_transform.y = 0;
 	
-	var relative_direction = (forward_direction * camera_input.y + right_direction * camera_input.x);
-	
-	camera_velocity.x = relative_direction.x * CAMERA_MOVE_SPEED;
-	camera_velocity.z = -relative_direction.y * CAMERA_MOVE_SPEED;
-	#camera_velocity.y -= delta * GRAVITY;
-	
-	camera_velocity = move_and_slide(camera_velocity, Vector3.UP);
+	camera_velocity = move_and_slide(camera_global_transform.normalized() * speed, Vector3.UP);
 
 func _input(event):
 	
