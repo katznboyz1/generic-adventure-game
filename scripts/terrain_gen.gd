@@ -9,7 +9,7 @@ const NOISE_LACUNARITY = 2;
 const NOISE_PERSISTENCE = .5;
 const HEIGHT_MULTIPLIER = 20;
 const UV_OFFSET = .1 * 10;
-const MAX_ACCEPTABLE_DISTANCE = Vector3(20, 20, 20);
+const MAX_ACCEPTABLE_DISTANCE = 20;
 
 const INITIAL_MAP_U_DISTANCE_FROM_ORIGIN = 250;
 const INITIAL_MAP_V_DISTANCE_FROM_ORIGIN = 250;
@@ -67,9 +67,9 @@ func generate_terrain():
 		var index_1_value = vertices[index_1];
 		var index_2_value = vertices[index_2];
 		
-		var index_1_2_distance = index_1_value - index_2_value;
+		var index_1_2_distance = index_1_value.distance_to(index_2_value);
 		
-		if (index_1_2_distance.normalized() >= MAX_ACCEPTABLE_DISTANCE): continue;
+		if (abs(index_1_2_distance) >= MAX_ACCEPTABLE_DISTANCE): continue;
 		
 		indices.append(index_1);
 		indices.append(index_2);

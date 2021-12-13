@@ -4,7 +4,7 @@ extends KinematicBody
 # https://godottutorials.pro/fps-player-camera-tutorial/
 
 const CAMERA_MOVE_SPEED = 20;
-const CAMERA_MIN_MAX_ANGLES = [-90, 90];
+const CAMERA_MIN_MAX_ANGLES = [0, 90];
 const GRAVITY = 0; #200;
 
 var camera_sensitivity = 20;
@@ -25,18 +25,21 @@ func _physics_process(delta):
 	camera_velocity.x = 0;
 	camera_velocity.y = 0;
 	
+	var sprinting_boost = 1;
+	
 	var movement = Vector3();
 	
 	if (Input.is_key_pressed(KEY_W)): movement -= global_transform.basis.y;
 	if (Input.is_key_pressed(KEY_S)): movement += global_transform.basis.y;
 	if (Input.is_key_pressed(KEY_A)): movement -= global_transform.basis.x;
 	if (Input.is_key_pressed(KEY_D)): movement += global_transform.basis.x;
+	if (Input.is_key_pressed(KEY_CONTROL)): sprinting_boost = 2;
 	if (Input.is_key_pressed(KEY_PAGEUP)): Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
 	if (Input.is_key_pressed(KEY_PAGEDOWN)): Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);
 	
 	movement.y = 0;
 	
-	camera_velocity = move_and_slide(movement.normalized() * CAMERA_MOVE_SPEED, Vector3.UP);
+	camera_velocity = move_and_slide(movement.normalized() * CAMERA_MOVE_SPEED * sprinting_boost, Vector3.UP);
 
 func _input(event):
 	
