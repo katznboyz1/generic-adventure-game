@@ -9,7 +9,6 @@ const NOISE_LACUNARITY = 2;
 const NOISE_PERSISTENCE = .5;
 const HEIGHT_MULTIPLIER = 20;
 const UV_OFFSET = .1 * 10;
-const MAX_ACCEPTABLE_DISTANCE = 20;
 
 const INITIAL_MAP_U_DISTANCE_FROM_ORIGIN = 250;
 const INITIAL_MAP_V_DISTANCE_FROM_ORIGIN = 250;
@@ -39,40 +38,44 @@ func initialize_terrain_generator():
 func generate_terrain():
 	
 	# mesh/uv
+	var index_mesh = 0;
+	
 	for u_coord in range(-INITIAL_MAP_U_DISTANCE_FROM_ORIGIN, INITIAL_MAP_U_DISTANCE_FROM_ORIGIN):
 		
-		for v_coord in range(-INITIAL_MAP_U_DISTANCE_FROM_ORIGIN, INITIAL_MAP_V_DISTANCE_FROM_ORIGIN):
+		for v_coord in range(-INITIAL_MAP_V_DISTANCE_FROM_ORIGIN, INITIAL_MAP_V_DISTANCE_FROM_ORIGIN):
 			
 			var height = noise_generator.get_noise_2d(u_coord, v_coord) * HEIGHT_MULTIPLIER;
 			
 			if (height < INITIAL_MAP_MIN_MAX_HEIGHTS[0]): height = INITIAL_MAP_MIN_MAX_HEIGHTS[0];
 			if (height > INITIAL_MAP_MIN_MAX_HEIGHTS[1]): height = INITIAL_MAP_MIN_MAX_HEIGHTS[1];
 			
-			vertices.append(Vector3(u_coord, height, v_coord));
+			vertices.push_back(Vector3(u_coord, height, v_coord));
 			
-			uvs.append(Vector2(u_coord * UV_OFFSET, v_coord * UV_OFFSET));
+			uvs.push_back(Vector2(u_coord * UV_OFFSET, v_coord * UV_OFFSET));
+			
+			index_mesh += 1;
 	
 	var incides_size = (((INITIAL_MAP_U_DISTANCE_FROM_ORIGIN + 0) * 2) + 0) * ((INITIAL_MAP_U_DISTANCE_FROM_ORIGIN - 0) * 2);
 	
 	# incices
-	for i in range(incides_size):
+	var indices_index = 0;
+	
+	for u_coord in range(-INITIAL_MAP_U_DISTANCE_FROM_ORIGIN, INITIAL_MAP_U_DISTANCE_FROM_ORIGIN):
 		
-		if (i == 0): continue;
-		
-		var index_1 = i;
-		var index_2 = i + (INITIAL_MAP_U_DISTANCE_FROM_ORIGIN * 2) + 1;
-		
-		if (index_1 >= vertices.size() || index_2 >= vertices.size()): continue;
-		
-		var index_1_value = vertices[index_1];
-		var index_2_value = vertices[index_2];
-		
-		var index_1_2_distance = index_1_value.distance_to(index_2_value);
-		
-		if (abs(index_1_2_distance) >= MAX_ACCEPTABLE_DISTANCE): continue;
-		
-		indices.append(index_1);
-		indices.append(index_2);
+		for v_coord in range(-INITIAL_MAP_V_DISTANCE_FROM_ORIGIN, INITIAL_MAP_V_DISTANCE_FROM_ORIGIN):
+			
+			var index_1 = indices_index;
+			var index_2 = indices_index + (INITIAL_MAP_U_DISTANCE_FROM_ORIGIN * 2) + 1;
+			
+			indices_index += 1;
+			
+			if (u_coord == -INITIAL_MAP_U_DISTANCE_FROM_ORIGIN || v_coord == -INITIAL_MAP_V_DISTANCE_FROM_ORIGIN): continue;
+			if (u_coord >= INITIAL_MAP_U_DISTANCE_FROM_ORIGIN - 2 || u_coord >= INITIAL_MAP_U_DISTANCE_FROM_ORIGIN - 2): continue;
+			
+			if (index_2 % ((INITIAL_MAP_U_DISTANCE_FROM_ORIGIN * 2) - 1) == 0): continue;
+			
+			indices.append(index_1);
+			indices.append(index_2);
 	
 	# normals
 	normals.resize(vertices.size());
@@ -127,7 +130,7 @@ func vertices_to_mesh():
 	
 	mesh_instance.mesh = mesh_array;
 	
-	mesh_instance.create_trimesh_collision();
+	#mesh_instance.create_trimesh_collision();
 
 func _ready():
 	
