@@ -30,8 +30,8 @@ func _physics_process(delta):
 	
 	var movement = Vector3();
 	
-	if (Input.is_key_pressed(KEY_W)): movement += global_transform.basis.y;
-	if (Input.is_key_pressed(KEY_S)): movement -= global_transform.basis.y;
+	if (Input.is_key_pressed(KEY_W)): movement -= global_transform.basis.y;
+	if (Input.is_key_pressed(KEY_S)): movement += global_transform.basis.y;
 	if (Input.is_key_pressed(KEY_A)): movement -= global_transform.basis.x;
 	if (Input.is_key_pressed(KEY_D)): movement += global_transform.basis.x;
 	if (Input.is_key_pressed(KEY_CONTROL)): sprinting_boost *= 2;
