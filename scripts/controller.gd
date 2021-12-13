@@ -3,7 +3,7 @@ extends KinematicBody
 
 # https://godottutorials.pro/fps-player-camera-tutorial/
 
-const CAMERA_MOVE_SPEED = 4;
+const CAMERA_MOVE_SPEED = 10;
 const CAMERA_MIN_MAX_ANGLES = [-89, 89];
 const GRAVITY = 0; #200;
 
@@ -61,5 +61,5 @@ func _process(delta):
 
 func _ready():
 	
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
 	OS.set_window_fullscreen(true);
