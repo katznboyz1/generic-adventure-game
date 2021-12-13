@@ -8,6 +8,7 @@ const CAMERA_MIN_MAX_ANGLES = [0, 90];
 const GRAVITY = 0; #200;
 
 var camera_sensitivity = 20;
+var camera_sensitivy_multiplier = 1;
 
 var mouse_delta = null;
 
@@ -37,6 +38,11 @@ func _physics_process(delta):
 	if (Input.is_key_pressed(KEY_PAGEUP)): Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
 	if (Input.is_key_pressed(KEY_PAGEDOWN)): Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);
 	
+	if (Input.is_key_pressed(KEY_C)):
+		camera_sensitivy_multiplier = .4;
+	else:
+		camera_sensitivy_multiplier = 1;
+	
 	movement.y = 0;
 	
 	camera_velocity = move_and_slide(movement.normalized() * CAMERA_MOVE_SPEED * sprinting_boost, Vector3.UP);
@@ -51,10 +57,10 @@ func _process(delta):
 	
 	if (mouse_delta == null): return;
 	
-	camera_node.rotation_degrees.x -= mouse_delta.y * camera_sensitivity * delta;
+	camera_node.rotation_degrees.x -= mouse_delta.y * camera_sensitivity * delta * camera_sensitivy_multiplier;
 	camera_node.rotation_degrees.x = clamp(camera_node.rotation_degrees.x, CAMERA_MIN_MAX_ANGLES[0], CAMERA_MIN_MAX_ANGLES[1]);
 	
-	player_node.rotation_degrees.y -= mouse_delta.x * camera_sensitivity * delta;
+	player_node.rotation_degrees.y -= mouse_delta.x * camera_sensitivity * delta * camera_sensitivy_multiplier;
 	
 	mouse_delta = Vector2();
 
