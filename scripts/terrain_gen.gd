@@ -10,8 +10,8 @@ const NOISE_PERSISTENCE = .5;
 const HEIGHT_MULTIPLIER = 40;
 const UV_OFFSET = .1;
 
-const INITIAL_MAP_U_DISTANCE_FROM_ORIGIN = 500;
-const INITIAL_MAP_V_DISTANCE_FROM_ORIGIN = 500;
+const INITIAL_MAP_U_DISTANCE_FROM_ORIGIN = 250;
+const INITIAL_MAP_V_DISTANCE_FROM_ORIGIN = 250;
 const INITIAL_MAP_MIN_MAX_HEIGHTS = [-10, 50];
 
 var terrain_generation_initialized = 0;
@@ -79,7 +79,7 @@ func generate_terrain():
 		var index_2 = indices[i + 1];
 		var index_3 = indices[i + 2];
 		
-		if (index_1 == index_2 or index_2 == index_3 or index_3 == index_1): continue;
+		if (index_1 == index_2 or index_2 == index_3 or index_3 == index_1): pass;
 		if (index_1 >= vertices.size() - 1 || index_2 >= vertices.size() - 1 || index_3 >= vertices.size() - 1): break;
 		if (index_1 >= indices.size() - 1 || index_2 >= indices.size() - 1 || index_3 >= indices.size() - 1): break;
 		
