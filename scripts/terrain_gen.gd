@@ -12,7 +12,6 @@ const UV_OFFSET = .1;
 
 const INITIAL_MAP_U_DISTANCE_FROM_ORIGIN = 200;
 const INITIAL_MAP_V_DISTANCE_FROM_ORIGIN = 200;
-const OFFSET_U_V = [0, 0];
 const INITIAL_MAP_MIN_MAX_HEIGHTS = [-10, 50];
 
 var terrain_generation_initialized = 0;
@@ -39,7 +38,7 @@ func initialize_terrain_generator():
 func generate_terrain():
 	
 	# mesh/uv
-	for u_coord in range(-INITIAL_MAP_U_DISTANCE_FROM_ORIGIN + OFFSET_U_V[0], INITIAL_MAP_U_DISTANCE_FROM_ORIGIN + OFFSET_U_V[0]):
+	for u_coord in range(-INITIAL_MAP_U_DISTANCE_FROM_ORIGIN, INITIAL_MAP_U_DISTANCE_FROM_ORIGIN):
 		
 		for v_coord in range(-INITIAL_MAP_V_DISTANCE_FROM_ORIGIN, INITIAL_MAP_V_DISTANCE_FROM_ORIGIN):
 			
@@ -57,7 +56,7 @@ func generate_terrain():
 	# incices
 	for i in range(incides_size):
 		
-		if (i % ((INITIAL_MAP_U_DISTANCE_FROM_ORIGIN * 2) - 1) == 0): continue;
+		if (i % ((INITIAL_MAP_U_DISTANCE_FROM_ORIGIN * 2) + 0) < 2): continue;
 		
 		indices.append(i);
 		indices.append(i + (INITIAL_MAP_U_DISTANCE_FROM_ORIGIN * 2) + 1);
@@ -81,8 +80,8 @@ func generate_terrain():
 		var index_3 = indices[i + 2];
 		
 		if (index_1 == index_2 or index_2 == index_3 or index_3 == index_1): continue;
-		if (index_1 >= vertices.size() || index_2 >= vertices.size() || index_3 >= vertices.size()): break;
-		if (index_1 >= indices.size() || index_2 >= indices.size() || index_3 >= indices.size()): break;
+		if (index_1 >= vertices.size() - 1 || index_2 >= vertices.size() - 1 || index_3 >= vertices.size() - 1): break;
+		if (index_1 >= indices.size() - 1 || index_2 >= indices.size() - 1 || index_3 >= indices.size() - 1): break;
 		
 		var vert_index_1 = vertices[index_1];
 		var vert_index_2 = vertices[index_2];
