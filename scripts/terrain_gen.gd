@@ -65,17 +65,19 @@ func generate_terrain():
 		for v_coord in range(-INITIAL_MAP_V_DISTANCE_FROM_ORIGIN, INITIAL_MAP_V_DISTANCE_FROM_ORIGIN):
 			
 			var index_1 = indices_index;
-			var index_2 = indices_index + (INITIAL_MAP_U_DISTANCE_FROM_ORIGIN * 2) + 0;
+			var index_2 = indices_index + (INITIAL_MAP_U_DISTANCE_FROM_ORIGIN * 2) + 1;
+			var index_3 = indices_index + (INITIAL_MAP_U_DISTANCE_FROM_ORIGIN * 2) + 1;
+			var index_4 = indices_index + 1;
 			
-			indices_index += 2;
-			
-			if (u_coord <= -INITIAL_MAP_U_DISTANCE_FROM_ORIGIN + 2 || v_coord <= -INITIAL_MAP_V_DISTANCE_FROM_ORIGIN + 2): continue;
-			if (u_coord >= INITIAL_MAP_U_DISTANCE_FROM_ORIGIN - 2 || v_coord >= INITIAL_MAP_V_DISTANCE_FROM_ORIGIN - 2): continue;
-			
-			if ((indices_index % (INITIAL_MAP_U_DISTANCE_FROM_ORIGIN * 2) + 0) == 0): continue;
+			indices_index += 1;
 			
 			indices.append(index_1);
 			indices.append(index_2);
+			
+			if (indices_index != 0 && (indices_index + 1) % ((INITIAL_MAP_U_DISTANCE_FROM_ORIGIN * 2) + 1) == 0):
+				
+				indices.append(index_3);
+				indices.append(index_4);
 	
 	# normals
 	normals.resize(vertices.size());
