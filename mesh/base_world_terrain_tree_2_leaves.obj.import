@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/base_world_terrain_tree_2_leaves.obj-8f9c0446c19e912130b2ed376163a320.mesh"
+
+[deps]
+
+files=[ "res://.import/base_world_terrain_tree_2_leaves.obj-8f9c0446c19e912130b2ed376163a320.mesh" ]
+
+source_file="res://mesh/base_world_terrain_tree_2_leaves.obj"
+dest_files=[ "res://.import/base_world_terrain_tree_2_leaves.obj-8f9c0446c19e912130b2ed376163a320.mesh", "res://.import/base_world_terrain_tree_2_leaves.obj-8f9c0446c19e912130b2ed376163a320.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286
