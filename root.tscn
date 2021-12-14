@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://mesh/base_world_terrain_mountain_1.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://scripts/camera.gd" type="Script" id=2]
@@ -66,16 +66,24 @@ data = PoolVector3Array( -2, 0, 1.9686, -1.9686, 0, 1.9686, -1.9843, 0, 1.9843, 
 lifetime_randomness = 1.0
 emission_shape = 2
 emission_box_extents = Vector3( 5, 1, 5 )
+flag_rotate_y = true
 initial_velocity = 1.0
 initial_velocity_random = 1.0
 angular_velocity = 1.0
 angular_velocity_random = 1.0
+radial_accel = 1.0
+radial_accel_random = 1.0
 damping_random = 1.0
-angle_random = 0.45
+angle = 720.0
+angle_random = 1.0
 scale_random = 0.5
 
-[sub_resource type="CubeMesh" id=14]
-size = Vector3( 0.003, 0.003, 0.003 )
+[sub_resource type="SpatialMaterial" id=15]
+flags_unshaded = true
+
+[sub_resource type="QuadMesh" id=14]
+material = SubResource( 15 )
+size = Vector2( 0.003, 0.003 )
 
 [node name="root" type="Spatial"]
 
@@ -482,7 +490,7 @@ transform = Transform( 7.50749, 0, 6.60588, 0, 10, 0, -6.60588, 0, 7.50749, -926
 transform = Transform( 250, 0, 0, 0, 250, 0, 0, 0, 250, 0, 600, 0 )
 cast_shadow = 0
 generate_lightmap = false
-amount = 250000
+amount = 1000000
 preprocess = 30.0
 speed_scale = 0.05
 randomness = 1.0
