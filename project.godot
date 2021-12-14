@@ -49,5 +49,8 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 threads/thread_safe_bvh=true
+quality/directional_shadow/size=8192
+quality/shadow_atlas/size=8192
+quality/shading/use_physical_light_attenuation=true
 quality/filters/msaa=2
 environment/default_environment="res://default_env.tres"

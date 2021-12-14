@@ -5,7 +5,6 @@
 
 [resource]
 flags_vertex_lighting = true
-flags_do_not_receive_shadows = true
 vertex_color_use_as_albedo = true
 params_diffuse_mode = 1
 albedo_texture = ExtResource( 1 )
