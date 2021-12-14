@@ -88,7 +88,7 @@ size = Vector2( 0.003, 0.003 )
 [node name="root" type="Spatial"]
 
 [node name="player_kinematic_body" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -908.736, 2.015, 764.488 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -906.369, 2.03541, 755.873 )
 collision/safe_margin = 0.01
 script = ExtResource( 3 )
 
@@ -102,7 +102,7 @@ current = true
 fov = 90.0
 size = 0.1
 near = 0.01
-far = 1000.0
+far = 700.0
 script = ExtResource( 2 )
 
 [node name="motion_blur" parent="player_kinematic_body/ar_vr_origin/camera" instance=ExtResource( 8 )]
