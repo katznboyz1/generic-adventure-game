@@ -14,6 +14,9 @@ sky_curve = 0.107029
 ground_bottom_color = Color( 0.207843, 0.207843, 0.211765, 1 )
 ground_horizon_color = Color( 0.603922, 0.537255, 0.47451, 1 )
 ground_curve = 0.0386374
+sun_color = Color( 0.960784, 0.898039, 0.309804, 1 )
+sun_latitude = 29.78
+sun_longitude = 155.0
 
 [sub_resource type="Environment" id=4]
 background_mode = 2
@@ -23,13 +26,16 @@ background_energy = 3.0
 ambient_light_color = Color( 1, 1, 1, 1 )
 ambient_light_energy = 0.75
 ambient_light_sky_contribution = 0.0
+fog_enabled = true
 fog_color = Color( 1, 1, 1, 1 )
+fog_sun_color = Color( 1, 1, 1, 1 )
 fog_depth_begin = 0.0
-fog_depth_end = 493.3
+fog_depth_end = 1500.0
 fog_depth_curve = 3.73213
-fog_height_min = 1.0
-fog_height_max = 0.1
-fog_height_curve = 1.03527
+fog_height_enabled = true
+fog_height_min = 250.0
+fog_height_max = 1000.0
+fog_height_curve = 0.138697
 tonemap_exposure = 0.5
 auto_exposure_enabled = true
 auto_exposure_scale = 1.5
@@ -61,7 +67,7 @@ data = PoolVector3Array( -2, 0, 1.9686, -1.9686, 0, 1.9686, -1.9843, 0, 1.9843, 
 [node name="root" type="Spatial"]
 
 [node name="player_kinematic_body" type="KinematicBody" parent="."]
-transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -722.057, 2.93083, 894.536 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -734.456, 2.015, 933.776 )
 collision/safe_margin = 0.01
 script = ExtResource( 3 )
 
@@ -69,19 +75,20 @@ script = ExtResource( 3 )
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -1 )
 
 [node name="camera" type="ARVRCamera" parent="player_kinematic_body/ar_vr_origin"]
-transform = Transform( 1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0.0130005 )
+transform = Transform( 1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0 )
 environment = SubResource( 4 )
 current = true
 fov = 90.0
-near = 0.02
-far = 750.0
+size = 0.1
+near = 0.01
+far = 1000.0
 script = ExtResource( 2 )
 
 [node name="player_collision_shape" type="CollisionShape" parent="player_kinematic_body"]
 shape = SubResource( 6 )
 
 [node name="sun_light" type="DirectionalLight" parent="."]
-transform = Transform( 0.638615, -0.650449, 0.411202, 0.492117, 0.756009, 0.431592, -0.591601, -0.0732615, 0.802895, 0, 288.813, -31.7254 )
+transform = Transform( 0.655033, -0.64813, 0.388406, 0.492119, 0.756004, 0.431598, -0.573368, -0.0915685, 0.814165, 0, 288.813, -31.7254 )
 light_color = Color( 0.941176, 0.941176, 0.941176, 1 )
 light_energy = 0.9
 light_specular = 1.0
