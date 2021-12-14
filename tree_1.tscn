@@ -20,6 +20,7 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 
 [node name="base_world_terrain_snowy_tree_1_green_leaves" type="MeshInstance" parent="StaticBody"]
 material_override = ExtResource( 4 )
+use_in_baked_light = true
 mesh = ExtResource( 1 )
 skeleton = NodePath("../..")
 material/0 = null
@@ -30,6 +31,7 @@ shape = SubResource( 1 )
 [node name="base_world_terrain_snowy_tree_1_log" type="MeshInstance" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.39588, 0 )
 material_override = ExtResource( 5 )
+use_in_baked_light = true
 mesh = ExtResource( 3 )
 skeleton = NodePath("../..")
 material/0 = null
@@ -39,6 +41,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.39588, 0 )
 shape = SubResource( 2 )
 
 [node name="base_world_terrain_snowy_tree_1_snowy_leaves" type="MeshInstance" parent="StaticBody"]
+use_in_baked_light = true
 mesh = ExtResource( 2 )
 skeleton = NodePath("../..")
 material/0 = ExtResource( 6 )

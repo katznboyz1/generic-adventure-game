@@ -12,6 +12,7 @@ data = PoolVector3Array( -0.474, 0.4801, -0.3016, 0.3535, 0.3255, -0.5996, 0.087
 
 [node name="base_world_terrain_rock_1" type="MeshInstance" parent="StaticBody"]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
+use_in_baked_light = true
 mesh = ExtResource( 2 )
 skeleton = NodePath("../..")
 material/0 = ExtResource( 1 )

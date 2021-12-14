@@ -12,6 +12,7 @@ transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
 [node name="StaticBody" type="StaticBody" parent="."]
 
 [node name="base_world_terrain_rock_4" type="MeshInstance" parent="StaticBody"]
+use_in_baked_light = true
 mesh = ExtResource( 1 )
 skeleton = NodePath("../..")
 material/0 = ExtResource( 2 )
