@@ -65,12 +65,13 @@ func _process(delta):
 	camera_node.rotation_degrees.x -= mouse_delta.y * camera_sensitivity * delta * camera_sensitivy_multiplier;
 	camera_node.rotation_degrees.x = clamp(camera_node.rotation_degrees.x, CAMERA_MIN_MAX_ANGLES[0], CAMERA_MIN_MAX_ANGLES[1]);
 	
-	player_node.rotation_degrees.y -= (mouse_delta.x * camera_sensitivity * delta * camera_sensitivy_multiplier);
+	camera_node.rotation_degrees.y -= (mouse_delta.x * camera_sensitivity * delta * camera_sensitivy_multiplier);
 	
 	mouse_delta = Vector2();
 
 func _ready():
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
+	
 	OS.set_window_maximized(true);
 	OS.set_window_title("beta 0.0.2");
