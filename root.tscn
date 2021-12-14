@@ -116,6 +116,10 @@ directional_shadow_max_distance = 250.0
 
 [node name="base_world_terrain_mountain_1_staticbody" type="StaticBody" parent="world"]
 
+[node name="base_world_terrain_mountain_1_collision_shape" type="CollisionShape" parent="world/base_world_terrain_mountain_1_staticbody"]
+transform = Transform( 500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0 )
+shape = SubResource( 10 )
+
 [node name="base_world_terrain_mountain_1_mesh" type="MeshInstance" parent="world/base_world_terrain_mountain_1_staticbody"]
 transform = Transform( 500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0 )
 use_in_baked_light = true
@@ -473,10 +477,6 @@ transform = Transform( -4.7693, 0, 8.78941, 0, 10, 0, -8.78941, 0, -4.7693, -931
 
 [node name="Spatial115" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
 transform = Transform( 7.50749, 0, 6.60588, 0, 10, 0, -6.60588, 0, 7.50749, -926.949, 0, 923.418 )
-
-[node name="base_world_terrain_mountain_1_collision_shape" type="CollisionShape" parent="world/base_world_terrain_mountain_1_staticbody"]
-transform = Transform( 500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0 )
-shape = SubResource( 10 )
 
 [node name="snow_particles" type="Particles" parent="."]
 transform = Transform( 250, 0, 0, 0, 250, 0, 0, 0, 250, 0, 600, 0 )
