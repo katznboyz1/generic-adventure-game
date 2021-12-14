@@ -22,17 +22,17 @@ sun_longitude = 180.0
 sun_energy = 0.0
 
 [sub_resource type="Environment" id=4]
-background_mode = 2
+background_mode = 1
 background_sky = SubResource( 9 )
-background_color = Color( 0.890196, 0.968627, 0.968627, 1 )
+background_color = Color( 0.819608, 0.858824, 0.858824, 1 )
 background_energy = 2.0
 ambient_light_color = Color( 1, 1, 1, 1 )
-fog_color = Color( 0, 0, 0, 1 )
+fog_enabled = true
+fog_color = Color( 0.819608, 0.858824, 0.858824, 1 )
 fog_sun_color = Color( 1, 1, 1, 1 )
 fog_depth_begin = 0.0
-fog_depth_end = 1500.0
-fog_depth_curve = 3.73213
-fog_height_enabled = true
+fog_depth_end = 600.0
+fog_depth_curve = 2.63902
 fog_height_min = 250.0
 fog_height_max = 1000.0
 fog_height_curve = 0.138697
@@ -88,7 +88,7 @@ size = Vector2( 0.003, 0.003 )
 [node name="root" type="Spatial"]
 
 [node name="player_kinematic_body" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1002.84, -5643.31, 724.695 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -905.914, 2.0256, 752.338 )
 collision/safe_margin = 0.01
 script = ExtResource( 3 )
 

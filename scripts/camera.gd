@@ -3,7 +3,7 @@ extends Camera
 
 const CAMERA_FOV = 90;
 const CAMERA_NEAR = .01;
-const CAMERA_FAR = 1000;
+const CAMERA_FAR = 700;
 
 onready var camera_node = get_node(NodePath("camera").get_as_property_path());
 
