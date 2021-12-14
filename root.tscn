@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://mesh/base_world_terrain_mountain_1.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://scripts/camera.gd" type="Script" id=2]
 [ext_resource path="res://scripts/controller.gd" type="Script" id=3]
 [ext_resource path="res://scripts/mountain_vertex_colors.gd" type="Script" id=4]
 [ext_resource path="res://shaders/mountain_1.tres" type="Material" id=5]
+[ext_resource path="res://addons/zylann.scatter/scatter3d.gd" type="Script" id=6]
+[ext_resource path="res://tree_1.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ProceduralSky" id=9]
 sky_curve = 0.107029
@@ -27,8 +29,10 @@ fog_height_min = 1.0
 fog_height_max = 0.1
 fog_height_curve = 1.03527
 tonemap_exposure = 0.5
+auto_exposure_enabled = true
 auto_exposure_scale = 1.5
-auto_exposure_min_luma = 0.5
+auto_exposure_min_luma = 0.2
+auto_exposure_max_luma = 1.05
 auto_exposure_speed = 2.0
 ss_reflections_enabled = true
 ssao_enabled = true
@@ -37,7 +41,8 @@ dof_blur_far_enabled = true
 dof_blur_far_distance = 150.0
 dof_blur_far_amount = 0.04
 glow_enabled = true
-glow_bloom = 0.5
+glow_intensity = 0.73
+glow_bloom = 0.76
 adjustment_enabled = true
 adjustment_contrast = 0.9
 adjustment_saturation = 0.8
@@ -53,7 +58,7 @@ data = PoolVector3Array( -2, 0, 1.9686, -1.9686, 0, 1.9686, -1.9843, 0, 1.9843, 
 [node name="root" type="Spatial"]
 
 [node name="player_kinematic_body" type="KinematicBody" parent="."]
-transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -3.35084, 151.631, 692.749 )
+transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -722.057, 2.93083, 894.536 )
 collision/safe_margin = 0.01
 script = ExtResource( 3 )
 
@@ -93,6 +98,356 @@ mesh = ExtResource( 1 )
 skeleton = NodePath("../../..")
 material/0 = ExtResource( 5 )
 script = ExtResource( 4 )
+
+[node name="base_world_terrain_mountain_1_tree_scatter" type="Spatial" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh"]
+transform = Transform( 0.002, 0, 0, 0, 0.002, 0, 0, 0, 0.002, 0, -0.009, 0 )
+script = ExtResource( 6 )
+_scenes = [ ExtResource( 7 ) ]
+
+[node name="Spatial" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 8.63789, 0, 5.03854, 0, 10, 0, -5.03854, 0, 8.63789, -440.543, 105.387, 649.034 )
+
+[node name="Spatial2" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -9.99205, 0, -0.398689, 0, 10, 0, 0.398689, 0, -9.99205, -543.023, 111.837, 450.872 )
+
+[node name="Spatial3" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -7.59335, 0, -6.50699, 0, 10, 0, 6.50699, 0, -7.59335, -638.048, 43.8371, 596.068 )
+
+[node name="Spatial4" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 7.96364, 0, -6.04817, 0, 10, 0, 6.04817, 0, 7.96364, -710.339, 108.945, 228.568 )
+
+[node name="Spatial5" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 2.34379, 0, -9.72145, 0, 10, 0, 9.72145, 0, 2.34379, -739.32, 82.1418, -67.3578 )
+
+[node name="Spatial6" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -9.5142, 0, 3.07896, 0, 10, 0, -3.07896, 0, -9.5142, -578.314, 185.385, -12.0055 )
+
+[node name="Spatial7" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 2.6675, 0, 9.63766, 0, 10, 0, -9.63766, 0, 2.6675, -601.372, 127.312, -209.725 )
+
+[node name="Spatial8" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 5.92721, 0, -8.05408, 0, 10, 0, 8.05408, 0, 5.92721, -739.246, 75.7632, -322.502 )
+
+[node name="Spatial9" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 7.13836, 0, -7.00313, 0, 10, 0, 7.00313, 0, 7.13836, -841.187, 50.3136, -223.166 )
+
+[node name="Spatial10" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 9.00472, 0, -4.34914, 0, 10, 0, 4.34914, 0, 9.00472, -783.312, 41.3135, -455.773 )
+
+[node name="Spatial11" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 3.82652, 0, -9.23892, 0, 10, 0, 9.23892, 0, 3.82652, -547.869, 123.154, -361.981 )
+
+[node name="Spatial12" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 9.97047, 0, 0.767954, 0, 10, 0, -0.767954, 0, 9.97047, -570.479, 112.678, -487.873 )
+
+[node name="Spatial13" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 6.08117, 0, -7.93847, 0, 10, 0, 7.93847, 0, 6.08117, -747.06, 44.3913, -641.716 )
+
+[node name="Spatial14" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -3.64452, 0, 9.31222, 0, 10, 0, -9.31222, 0, -3.64452, -842.216, 14.8995, -660.019 )
+
+[node name="Spatial15" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 9.86045, 0, -1.66479, 0, 10, 0, 1.66479, 0, 9.86045, -733.605, 17.6225, -803.534 )
+
+[node name="Spatial16" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 8.34708, 0, -5.50693, 0, 10, 0, 5.50693, 0, 8.34708, -666.82, 46.3302, -743.889 )
+
+[node name="Spatial17" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 8.88396, 0, 4.59079, 0, 10, 0, -4.59079, 0, 8.88396, -603.616, 80.9912, -639.538 )
+
+[node name="Spatial18" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -9.82137, 0, -1.88167, 0, 10, 0, 1.88167, 0, -9.82137, -467.763, 87.8699, -644.55 )
+
+[node name="Spatial19" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -8.09827, 0, 5.86669, 0, 10, 0, -5.86669, 0, -8.09827, -529.471, 53.0871, -796.691 )
+
+[node name="Spatial20" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 9.99966, 0, -0.0822678, 0, 10, 0, 0.0822678, 0, 9.99966, -693.663, 71.4986, -554.767 )
+
+[node name="Spatial21" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 7.53473, 0, 6.57479, 0, 10, 0, -6.57479, 0, 7.53473, -424.847, 27.1173, -886.066 )
+
+[node name="Spatial22" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -7.21859, 0, 6.9204, 0, 10, 0, -6.9204, 0, -7.21859, -350.671, 73.6928, -772.098 )
+
+[node name="Spatial23" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 9.75106, 0, 2.21737, 0, 10, 0, -2.21737, 0, 9.75106, -271.224, 131.703, -675.595 )
+
+[node name="Spatial24" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -9.89621, 0, -1.43704, 0, 10, 0, 1.43704, 0, -9.89621, -134.527, 217.849, -538.789 )
+
+[node name="Spatial25" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -4.55616, 0, -8.90177, 0, 10, 0, 8.90177, 0, -4.55616, -176.032, 154.787, -692.515 )
+
+[node name="Spatial26" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 9.9648, 0, 0.838315, 0, 10, 0, -0.838315, 0, 9.9648, -236.264, 97.8097, -784.049 )
+
+[node name="Spatial27" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -5.14394, 0, 8.57554, 0, 10, 0, -8.57554, 0, -5.14394, -305.607, 37.2791, -872.174 )
+
+[node name="Spatial28" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 9.80556, 0, 1.96242, 0, 10, 0, -1.96242, 0, 9.80556, -188.309, 54.6677, -870.217 )
+
+[node name="Spatial29" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -8.16026, 0, -5.78015, 0, 10, 0, 5.78015, 0, -8.16026, -227.12, 34.9882, -888.877 )
+
+[node name="Spatial30" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -2.80771, 0, 9.59775, 0, 10, 0, -9.59775, 0, -2.80771, -68.8702, 114.713, -799.865 )
+
+[node name="Spatial31" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -6.52745, 0, 7.57578, 0, 10, 0, -7.57578, 0, -6.52745, -113.068, 176.206, -706.725 )
+
+[node name="Spatial32" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -9.49686, 0, 3.13204, 0, 10, 0, -3.13204, 0, -9.49686, -128.579, 131.753, -763.502 )
+
+[node name="Spatial33" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -9.94251, 0, 1.0707, 0, 10, 0, -1.0707, 0, -9.94251, -24.8254, 54.999, -859.584 )
+
+[node name="Spatial34" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -9.90577, 0, -1.36959, 0, 10, 0, 1.36959, 0, -9.90577, 57.1462, 128.11, -788.175 )
+
+[node name="Spatial35" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 9.70186, 0, 2.42361, 0, 10, 0, -2.42361, 0, 9.70186, 48.676, 183.812, -672.656 )
+
+[node name="Spatial36" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 5.31773, 0, 8.46887, 0, 10, 0, -8.46887, 0, 5.31773, 42.9383, 230.291, -505.928 )
+
+[node name="Spatial37" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 9.8215, 0, 1.88101, 0, 10, 0, -1.88101, 0, 9.8215, 127.439, 248.4, -541.817 )
+
+[node name="Spatial38" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -2.91162, 0, -9.56674, 0, 10, 0, 9.56674, 0, -2.91162, 197.947, 191.798, -660.465 )
+
+[node name="Spatial39" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -2.208, 0, 9.75319, 0, 10, 0, -9.75319, 0, -2.208, 196.837, 110.911, -798.261 )
+
+[node name="Spatial40" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -9.91615, 0, -1.29224, 0, 10, 0, 1.29224, 0, -9.91615, 93.2598, 36.7672, -890.169 )
+
+[node name="Spatial41" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -8.1828, 0, -5.7482, 0, 10, 0, 5.7482, 0, -8.1828, -1.68025, 34.326, -892.418 )
+
+[node name="Spatial42" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -8.5828, 0, 5.13182, 0, 10, 0, -5.13182, 0, -8.5828, 28.7688, 138.915, -774.817 )
+
+[node name="Spatial43" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 8.03991, 0, -5.94642, 0, 10, 0, 5.94642, 0, 8.03991, 224.413, 42.8176, -876.049 )
+
+[node name="Spatial44" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 4.53636, 0, 8.91187, 0, 10, 0, -8.91187, 0, 4.53636, 335.33, 119.442, -739.828 )
+
+[node name="Spatial45" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -6.45749, 0, -7.6355, 0, 10, 0, 7.6355, 0, -6.45749, 364.972, 168.886, -655.836 )
+
+[node name="Spatial46" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 3.65555, 0, 9.3079, 0, 10, 0, -9.3079, 0, 3.65555, 495.581, 156.682, -579.492 )
+
+[node name="Spatial47" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 9.41588, 0, -3.36768, 0, 10, 0, 3.36768, 0, 9.41588, 576.252, 112.796, -605.838 )
+
+[node name="Spatial48" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 4.80466, 0, 8.77013, 0, 10, 0, -8.77013, 0, 4.80466, 645.56, 74.1669, -622.159 )
+
+[node name="Spatial49" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 9.92501, 0, -1.22238, 0, 10, 0, 1.22238, 0, 9.92501, 432.327, 61.5381, -821.281 )
+
+[node name="Spatial50" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 9.99991, 0, -0.0428182, 0, 10, 0, 0.0428182, 0, 9.99991, 420.067, 137.28, -701.41 )
+
+[node name="Spatial51" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -9.99407, 0, 0.344277, 0, 10, 0, -0.344277, 0, -9.99407, 609.962, 43.585, -752.097 )
+
+[node name="Spatial52" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -1.01502, 0, -9.94835, 0, 10, 0, 9.94835, 0, -1.01502, 283.3, 48.9059, -858.209 )
+
+[node name="Spatial53" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -9.54582, 0, -2.97948, 0, 10, 0, 2.97948, 0, -9.54582, 477.859, 104.907, -694.622 )
+
+[node name="Spatial54" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -6.4551, 0, -7.63752, 0, 10, 0, 7.63752, 0, -6.4551, 549.605, 19.4404, -868.295 )
+
+[node name="Spatial55" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 7.50319, 0, -6.61076, 0, 10, 0, 6.61076, 0, 7.50319, 778.829, 0.0682983, -890.467 )
+
+[node name="Spatial56" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 4.24885, 0, 9.05247, 0, 10, 0, -9.05247, 0, 4.24885, 878.83, 0, -867.664 )
+
+[node name="Spatial57" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -3.19473, 0, 9.47595, 0, 10, 0, -9.47595, 0, -3.19473, 871.094, 0.607193, -762.28 )
+
+[node name="Spatial58" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 9.90587, 0, 1.36887, 0, 10, 0, -1.36887, 0, 9.90587, 695.968, 16.3441, -783.442 )
+
+[node name="Spatial59" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -9.9329, 0, 1.15649, 0, 10, 0, -1.15649, 0, -9.9329, 795.912, 27.2468, -623.175 )
+
+[node name="Spatial60" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 9.63986, 0, -2.65953, 0, 10, 0, 2.65953, 0, 9.63986, 759.747, 3.74437, -826.831 )
+
+[node name="Spatial61" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 9.18556, 0, 3.9529, 0, 10, 0, -3.9529, 0, 9.18556, 816.633, 6.76652, -729.853 )
+
+[node name="Spatial62" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -6.67408, 0, -7.44692, 0, 10, 0, 7.44692, 0, -6.67408, 900.02, 1.90533, -671.804 )
+
+[node name="Spatial63" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -4.53221, 0, -8.91398, 0, 10, 0, 8.91398, 0, -4.53221, 863.442, 16.4479, -546.931 )
+
+[node name="Spatial64" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 9.82871, 0, 1.84294, 0, 10, 0, -1.84294, 0, 9.82871, 799.104, 43.9098, -524.493 )
+
+[node name="Spatial65" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -8.94401, 0, -4.47265, 0, 10, 0, 4.47265, 0, -8.94401, 854.635, 13.2063, -611.762 )
+
+[node name="Spatial66" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -1.66282, 0, 9.86078, 0, 10, 0, -9.86078, 0, -1.66282, 853.302, 41.4815, -357.122 )
+
+[node name="Spatial67" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 4.64262, 0, 8.85698, 0, 10, 0, -8.85698, 0, 4.64262, 890.619, 15.9698, -455.301 )
+
+[node name="Spatial68" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -4.79986, 0, 8.77276, 0, 10, 0, -8.77276, 0, -4.79986, 909.536, 23.4466, -224.857 )
+
+[node name="Spatial69" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 1.84049, 0, 9.82917, 0, 10, 0, -9.82917, 0, 1.84049, 927.579, 11.0151, -323.366 )
+
+[node name="Spatial70" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 3.19294, 0, -9.47656, 0, 10, 0, 9.47656, 0, 3.19294, 857.001, 0, 833.503 )
+
+[node name="Spatial71" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -7.1872, 0, -6.953, 0, 10, 0, 6.953, 0, -7.1872, 900.904, -1.52588e-05, 919.507 )
+
+[node name="Spatial72" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 8.11182, 0, 5.84794, 0, 10, 0, -5.84794, 0, 8.11182, 925.847, 0, 828.305 )
+
+[node name="Spatial73" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -2.97795, 0, 9.5463, 0, 10, 0, -9.5463, 0, -2.97795, 802.527, 0.156433, 865.505 )
+
+[node name="Spatial74" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -1.71459, 0, 9.85191, 0, 10, 0, -9.85191, 0, -1.71459, 657.432, 42.2003, 777.1 )
+
+[node name="Spatial75" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 1.27324, 0, 9.91861, 0, 10, 0, -9.91861, 0, 1.27324, 677.56, 6.87398, 878.667 )
+
+[node name="Spatial76" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -9.99986, 0, -0.0521839, 0, 10, 0, 0.0521839, 0, -9.99986, 555.216, 23.3052, 865.055 )
+
+[node name="Spatial77" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 3.34414, 0, 9.42426, 0, 10, 0, -9.42426, 0, 3.34414, 312.03, 33.45, 858.779 )
+
+[node name="Spatial78" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 2.98725, 0, -9.54339, 0, 10, 0, 9.54339, 0, 2.98725, 373.8, 8.74208, 926.357 )
+
+[node name="Spatial79" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 9.54938, 0, 2.96806, 0, 10, 0, -2.96806, 0, 9.54938, 244.246, 15.2964, 903.591 )
+
+[node name="Spatial80" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -5.35024, 0, -8.44837, 0, 10, 0, 8.44837, 0, -5.35024, 134.164, 34.2176, 853.523 )
+
+[node name="Spatial81" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -2.92496, 0, 9.56267, 0, 10, 0, -9.56267, 0, -2.92496, 85.1871, 13.8913, 907.952 )
+
+[node name="Spatial82" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 1.20415, 0, 9.92724, 0, 10, 0, -9.92724, 0, 1.20415, -50.3008, 36.7598, 867.703 )
+
+[node name="Spatial83" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -7.69293, 0, -6.38896, 0, 10, 0, 6.38896, 0, -7.69293, -90.3955, 11.1809, 921.799 )
+
+[node name="Spatial84" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -9.4643, 0, 3.22908, 0, 10, 0, -3.22908, 0, -9.4643, 12.4917, 11.792, 919.296 )
+
+[node name="Spatial85" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 5.09058, 0, 8.60732, 0, 10, 0, -8.60732, 0, 5.09058, 24.9763, 41.7078, 853.694 )
+
+[node name="Spatial86" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 9.37504, 0, 3.47974, 0, 10, 0, -3.47974, 0, 9.37504, -95.529, 88.42, 795.299 )
+
+[node name="Spatial87" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -4.13384, 0, -9.10557, 0, 10, 0, 9.10557, 0, -4.13384, -162.016, 87.6739, 804.339 )
+
+[node name="Spatial88" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -6.02631, 0, -7.9802, 0, 10, 0, 7.9802, 0, -6.02631, -166.131, 40.7615, 857.548 )
+
+[node name="Spatial89" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 5.68914, 0, 8.22397, 0, 10, 0, -8.22397, 0, 5.68914, -248.764, 18.3476, 904.57 )
+
+[node name="Spatial90" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -9.91172, 0, -1.32584, 0, 10, 0, 1.32584, 0, -9.91172, -161.298, 5.23692, 951.239 )
+
+[node name="Spatial91" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 6.49344, 0, 7.60495, 0, 10, 0, -7.60495, 0, 6.49344, -322.117, 90.7799, 803.334 )
+
+[node name="Spatial92" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -9.34109, 0, 3.56987, 0, 10, 0, -3.56987, 0, -9.34109, -403.353, 46.1626, 851.619 )
+
+[node name="Spatial93" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -9.52413, 0, -3.04809, 0, 10, 0, 3.04809, 0, -9.52413, -309.223, 8.16623, 939.49 )
+
+[node name="Spatial94" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 5.09202, 0, 8.60647, 0, 10, 0, -8.60647, 0, 5.09202, -483.284, 10.2958, 924.197 )
+
+[node name="Spatial95" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -8.14527, 0, -5.80126, 0, 10, 0, 5.80126, 0, -8.14527, -526.593, 39.7137, 822.659 )
+
+[node name="Spatial96" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 9.33975, 0, 3.57339, 0, 10, 0, -3.57339, 0, 9.33975, -515.332, 59.9341, 752.977 )
+
+[node name="Spatial97" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -4.80854, 0, -8.76801, 0, 10, 0, 8.76801, 0, -4.80854, -710.755, 16.5292, 691.663 )
+
+[node name="Spatial98" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -3.45367, 0, 9.38468, 0, 10, 0, -9.38468, 0, -3.45367, -962.463, 3.00588, 259.975 )
+
+[node name="Spatial99" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -5.75059, 0, 8.18112, 0, 10, 0, -8.18112, 0, -5.75059, -837.898, 26.7729, 344.176 )
+
+[node name="Spatial100" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 0.287382, 0, 9.99587, 0, 10, 0, -9.99587, 0, 0.287382, -855.434, 4.29466, 619.53 )
+
+[node name="Spatial101" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 7.06913, 0, 7.073, 0, 10, 0, -7.073, 0, 7.06913, -973.029, 0.0981102, 510.662 )
+
+[node name="Spatial102" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 6.58957, 0, -7.5218, 0, 10, 0, 7.5218, 0, 6.58957, -815.828, 20.2205, 442.808 )
+
+[node name="Spatial103" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -6.20068, 0, -7.84548, 0, 10, 0, 7.84548, 0, -6.20068, -962.388, 1.99923, 333.514 )
+
+[node name="Spatial104" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 8.6227, 0, 5.06449, 0, 10, 0, -5.06449, 0, 8.6227, -855.361, 13.2543, 426.429 )
+
+[node name="Spatial105" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -9.52997, 0, -3.02979, 0, 10, 0, 3.02979, 0, -9.52997, -854.714, 13.0875, 429.049 )
+
+[node name="Spatial106" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -6.25297, 0, -7.80387, 0, 10, 0, 7.80387, 0, -6.25297, -896.46, 5.78621, 465.305 )
+
+[node name="Spatial107" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -7.03535, 0, 7.10661, 0, 10, 0, -7.10661, 0, -7.03535, -774.873, 8.58548, 662.252 )
+
+[node name="Spatial108" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -9.65079, 0, 2.61958, 0, 10, 0, -2.61958, 0, -9.65079, -858.504, 1.86534, 744.047 )
+
+[node name="Spatial109" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 9.90736, 0, 1.35801, 0, 10, 0, -1.35801, 0, 9.90736, -790.754, 0.209808, 867.923 )
+
+[node name="Spatial110" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 6.62501, 0, -7.49061, 0, 10, 0, 7.49061, 0, 6.62501, -802.246, 2.28882e-05, 907.001 )
+
+[node name="Spatial111" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -0.562285, 0, 9.98418, 0, 10, 0, -9.98418, 0, -0.562285, -665.093, 0.256409, 935.643 )
+
+[node name="Spatial112" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 3.39673, 0, -9.40544, 0, 10, 0, 9.40544, 0, 3.39673, -723.341, 9.62852, 795.648 )
+
+[node name="Spatial113" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 2.66043, 0, -9.63961, 0, 10, 0, 9.63961, 0, 2.66043, -598.619, 23.8952, 822.604 )
+
+[node name="Spatial114" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( -4.7693, 0, 8.78941, 0, 10, 0, -8.78941, 0, -4.7693, -931.552, 7.62939e-06, 802.336 )
+
+[node name="Spatial115" parent="world/base_world_terrain_mountain_1_staticbody/base_world_terrain_mountain_1_mesh/base_world_terrain_mountain_1_tree_scatter" instance=ExtResource( 7 )]
+transform = Transform( 7.50749, 0, 6.60588, 0, 10, 0, -6.60588, 0, 7.50749, -926.949, 0, 923.418 )
 
 [node name="base_world_terrain_mountain_1_collision_shape" type="CollisionShape" parent="world/base_world_terrain_mountain_1_staticbody"]
 transform = Transform( 500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0 )
