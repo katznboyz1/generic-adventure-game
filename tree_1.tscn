@@ -3,6 +3,7 @@
 [ext_resource path="res://mesh/base_world_terrain_tree_1.obj" type="ArrayMesh" id=1]
 
 [sub_resource type="SpatialMaterial" id=2]
+flags_vertex_lighting = true
 
 [sub_resource type="CapsuleShape" id=3]
 
