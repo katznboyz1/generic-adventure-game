@@ -4,7 +4,7 @@ extends KinematicBody
 # https://godottutorials.pro/fps-player-camera-tutorial/
 
 const CAMERA_MOVE_SPEED = 20;
-const CAMERA_MIN_MAX_ANGLES = [0, 90];
+const CAMERA_MIN_MAX_ANGLES = [-45, 90];
 const GRAVITY = .05;
 const JUMP_SPEED = 1;
 

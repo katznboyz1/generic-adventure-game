@@ -78,12 +78,12 @@ angle_random = 0.45
 scale_random = 0.5
 
 [sub_resource type="CubeMesh" id=14]
-size = Vector3( 0.008, 0.008, 0.008 )
+size = Vector3( 0.003, 0.003, 0.003 )
 
 [node name="root" type="Spatial"]
 
 [node name="player_kinematic_body" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -966.225, 2.015, 610.336 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -966.225, 2.015, 702.886 )
 collision/safe_margin = 0.01
 script = ExtResource( 3 )
 
@@ -485,9 +485,8 @@ transform = Transform( 250, 0, 0, 0, 250, 0, 0, 0, 250, 0, 600, 0 )
 cast_shadow = 0
 generate_lightmap = false
 amount = 250000
-lifetime = 300.0
-preprocess = 300.0
-speed_scale = 0.1
+preprocess = 30.0
+speed_scale = 0.05
 randomness = 1.0
 process_material = SubResource( 13 )
 draw_pass_1 = SubResource( 14 )
