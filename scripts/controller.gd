@@ -42,11 +42,14 @@ func _physics_process(delta):
 	if (Input.is_key_pressed(KEY_PAGEDOWN)): Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);
 	if (Input.is_key_pressed(KEY_SPACE) && is_on_floor()): downwards_velocity += JUMP_SPEED * 1;
 	
-	movement.y = -GRAVITY + downwards_velocity;
+	if (!is_on_floor()):
+		movement.y = -GRAVITY + downwards_velocity;
+	else:
+		movement.y = 0;
 	
 	downwards_velocity -= GRAVITY;
 	
-	camera_velocity = move_and_slide(movement.normalized() * CAMERA_MOVE_SPEED * sprinting_boost, Vector3.UP);
+	camera_velocity = move_and_slide(movement.normalized() * CAMERA_MOVE_SPEED * sprinting_boost, Vector3.UP, true);
 	
 	if (is_on_floor()): 
 		downwards_velocity = 0;
