@@ -88,7 +88,7 @@ size = Vector2( 0.003, 0.003 )
 [node name="root" type="Spatial"]
 
 [node name="player_kinematic_body" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -906.369, 2.03541, 755.873 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -926.529, 2.015, 842.619 )
 collision/safe_margin = 0.01
 script = ExtResource( 3 )
 

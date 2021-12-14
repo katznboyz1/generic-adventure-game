@@ -3,6 +3,7 @@
 [resource]
 flags_vertex_lighting = true
 vertex_color_use_as_albedo = true
+params_diffuse_mode = 1
 metallic_specular = 0.0
 roughness_texture_channel = 4
 uv1_scale = Vector3( 700, 700, 700 )
