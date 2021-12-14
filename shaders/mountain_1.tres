@@ -5,7 +5,4 @@ flags_vertex_lighting = true
 vertex_color_use_as_albedo = true
 metallic_specular = 0.0
 roughness_texture_channel = 4
-refraction_enabled = true
-refraction_scale = 0.05
-refraction_texture_channel = 0
 uv1_scale = Vector3( 700, 700, 700 )
