@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/base_world_terrain_snowy_tree_1_snowy_leaves.obj-8a874a85ea86c8e2ba1449a25cf5f58a.mesh"
+
+[deps]
+
+files=[ "res://.import/base_world_terrain_snowy_tree_1_snowy_leaves.obj-8a874a85ea86c8e2ba1449a25cf5f58a.mesh" ]
+
+source_file="res://mesh/base_world_terrain_snowy_tree_1_snowy_leaves.obj"
+dest_files=[ "res://.import/base_world_terrain_snowy_tree_1_snowy_leaves.obj-8a874a85ea86c8e2ba1449a25cf5f58a.mesh", "res://.import/base_world_terrain_snowy_tree_1_snowy_leaves.obj-8a874a85ea86c8e2ba1449a25cf5f58a.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286
